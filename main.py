@@ -4,6 +4,7 @@ import os
 import librosa
 import soundfile as sf
 import whisper
+from tkinter import simpledialog
 
 import summarizer
 
@@ -206,10 +207,16 @@ for i, filename in enumerate(os.listdir(directory)):
         # Print the recognized text
         print(f"Transcription for chunk {i}: {result.text}")
         transcribe.append(result.text)
+        print(
+            "------------------------------------------------------------------------------------------------------------")
+
 print("All chunks processed.")
+print("=====================================***************************************=================================================")
+
 transcription_full = "\n".join(transcribe)
 print(transcription_full)
 
-num = int(input('Enter number of sentences: '))
+num = simpledialog.askinteger("Number of Sentences", "Enter number of sentences:")
+print("=====================================***************************************=================================================")
 summary = summarizer.summarize_text(transcription_full, language, num)
 print(f"Summary of the transcription is {summary}")
