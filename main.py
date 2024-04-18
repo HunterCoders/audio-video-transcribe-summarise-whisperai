@@ -5,6 +5,7 @@ import librosa
 import soundfile as sf
 import whisper
 from tkinter import simpledialog
+from tkinter import messagebox
 
 import summarizer
 
@@ -118,6 +119,17 @@ def choose_file():
     root = tk.Tk()
     root.withdraw()  # Hide the root window
     file_path = filedialog.askopenfilename()  # Open file dialog
+
+    # Check if a file is selected
+    if not file_path:
+        return None
+
+    # Check if the file has a valid extension
+    valid_extensions = ['.mp3', '.mp4', '.mpeg', '.mpga', '.m4a', '.wav', '.webm']
+    if not any(file_path.lower().endswith(ext) for ext in valid_extensions):
+        messagebox.showerror("Error", "Selected file is not a valid audio or video file.")
+        return None
+
     return file_path
 
 
@@ -148,14 +160,15 @@ def clear_directory(directory):
 audio_file_path = choose_file()
 if not audio_file_path:
     print("No file selected. Exiting...")
-    exit()
+    audio_file_path = choose_file()
+
 
 # load audio
 audio, sample_rate = librosa.load(audio_file_path, sr=None, mono=True, res_type='kaiser_fast')
 
 # for time issues the input is trimmed to 90 secs
 # Trim audio to 90 seconds
-trim_duration = 300
+trim_duration = 90
 if len(audio) > trim_duration * sample_rate:
     audio = audio[:int(trim_duration * sample_rate)]
 
@@ -172,7 +185,7 @@ trimmed_audio_path = os.path.join(output_dir, "trimmed_audio.wav")  # 90 seconds
 sf.write(trimmed_audio_path, audio, int(sample_rate))
 
 # Load Whisper model
-model = whisper.load_model("base")
+model = whisper.load_model("small")
 transcribe = []  # stores the transcription of each chunk
 
 # the chunks are stored as wav files
