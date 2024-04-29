@@ -1,48 +1,49 @@
-![image](https://github.com/HunterCoders/audio-video-transcribe-summarise-whisperai/assets/157727212/094c9a13-3ce7-46c6-a973-23a5064218d8)#packages to be installed
-        1.  pip install git+https://github.com/openai/whisper.git  (Whisper API)
-        2. choco install ffmpeg
-        3. pip install librosa
-        4.  pip install nltk
+**#Packages to be installed**  
+        1.  pip install git+https://github.com/openai/whisper.git  (Whisper API)  
+        2.  choco install ffmpeg  
+        3.  pip install librosa  
+        4.  pip install nltk  
 
-#In case of failures in nltk package run this as scratch python file (Can be deleted later)
-      import nltk
-      nltk.download('punkt')
-      nltk.download('stopwords')
-Some test videos that has been tested. 
+**#In case of failures in nltk package run this as scratch python file (Can be deleted later)**  
+      import nltk  
+      nltk.download('punkt')  
+      nltk.download('stopwords')  
+Some test videos that has been tested.   
 (Disclaimer: I own no rights to these videos)
-      1. https://www.youtube.com/watch?v=VnTVz39FAVQ
-      2. https://www.youtube.com/watch?v=xTzvQkOll2U
-      3. https://www.youtube.com/watch?v=jiHz12oOpdI
+      1. https://www.youtube.com/watch?v=VnTVz39FAVQ  
+      2. https://www.youtube.com/watch?v=xTzvQkOll2U  
+      3. https://www.youtube.com/watch?v=jiHz12oOpdI  
 
 
-Requirements
+**Requirements**  
 Modules Installed/Required:
-•	tkinter
-•	whisper 3.0
-•	soundfile
-•	os
-•	librosa
-•	ffmpeg
-Software Requirements:
-•	Python 3.11
-•	VRAM of ~1GB to ~10GB depending on the Whisper model used (small model requires 2GB).
-Methodology
-1.	Input Handling:
-Utilize tkinter library for creating a simple GUI for selecting input files.
-Incorporate a file dialog box for choosing audio or video files.
-2.	Audio/Video Processing:
-Use librosa library for handling audio/video files.
-Split the video into epochs of 30 seconds each.
-Extract the audio from each epoch for transcription.
-3.	Transcription:
-Integrate OpenAI's Whisper API for transcribing audio.
-Concatenate the transcriptions from all epochs into a single text.
-Detect the language of the transcribed text.
-4.	Summarization:
-Implement a summarization algorithm based on the number of sentences provided by the user.
+•	tkinter  
+•	whisper 3.0  
+•	soundfile  
+•	os  
+•	librosa  
+•	ffmpeg  
+**Software Requirements:**  
+•	Python 3.11  
+•	VRAM of ~1GB to ~10GB depending on the Whisper model used (small model requires 2GB).  
+**Methodology**  
+1.	Input Handling:  
+Utilize tkinter library for creating a simple GUI for selecting input files.  
+Incorporate a file dialog box for choosing audio or video files.  
+2.	Audio/Video Processing:  
+Use librosa library for handling audio/video files.  
+Split the video into epochs of 30 seconds each.  
+Extract the audio from each epoch for transcription.  
+3.	Transcription:  
+Integrate OpenAI's Whisper API for transcribing audio.  
+Concatenate the transcriptions from all epochs into a single text.  
+Detect the language of the transcribed text.  
+4.	Summarization:  
+Implement a summarization algorithm based on the number of sentences provided by the user.  
 Utilize Natural Language Processing techniques for summarization, using NLTK.
-Modules
-User Interface (UI):
+
+**Modules**  
+User Interface (UI):  
 Provides a graphical interface for file selection and interaction with the system.
 Audio/Video Processing:
 Handles the loading, chunking, and processing of audio/video files.
@@ -52,7 +53,7 @@ Summarization:
 Implements summarization algorithm using NLTK based on a user-specified number of sentences.
 
 
-Views: <br>
+**Views:** <br>
 1.	File Selection<br>
 ![image](https://github.com/HunterCoders/audio-video-transcribe-summarise-whisperai/assets/157727212/0d616d12-15e4-4420-a44f-b8e59a44f65c)<br>
 2.	Wrong Format Chosen<br>
